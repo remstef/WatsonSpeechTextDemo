@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Speech to Text</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/css/watson-bootstrap-dark.css">
+<link rel="stylesheet" href="/css/banner.css">
+<link rel="stylesheet" href="/css/style.css">
+<style type="text/css"></style>
+</head>
+<body>
+<div class="micButton"></div>
+<p class="micText">Press to start speaking</p>
+<div class="well">
+<div style="display:none" class="form-group row loading text-center">
+<img src="images/watson.gif">
+</div>
+<div class="errorMsg" />
+<div id="text" style="display: none;" />
+</div>
+<form class="speech-form form-horizontal" method="get">
+	<fieldset>
+    	<textarea id="textArea" class="form-control" required="" rows="8" name="text"></textarea>
+        <input class="btn btn-block speak-button" value="Speak"></input>
+    </fieldset>
+</form>
+<audio class="audio" controls="" autobuffer="" preload="auto" autoplay="" src="/synthesize?text=The+Text+to+Speech+service+uses+IBM's+speec…can+be+accessed+via+a+REST+interface.&voice=VoiceEnUsMichael"></audio>
+<form id="fileupload" method="POST" enctype="multipart/form-data" action="/" class="upload-form"><input type="hidden" name="url" class="url-input"></form>
+<script type="text/javascript" src="/js/browser-detect.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/speech-recognizer.js"></script>
+<script type="text/javascript" src="/js/socket.io.js"></script>
+<script type="text/javascript" src="/js/demo-tts.js"></script>
+<script type="text/javascript" src="/js/demo-stt.js"></script>
+</body>
+</html>

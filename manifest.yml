@@ -1,0 +1,8 @@
+applications:
+- disk_quota: 
+  host: 
+  name: 
+  path: .
+  domain: 
+  instances: 
+  memory: 
