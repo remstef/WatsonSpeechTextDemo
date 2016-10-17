@@ -21,13 +21,14 @@ var app = require('express')(),
   io = require('socket.io')(server),
   bluemix = require('./config/bluemix'),
   watson = require('watson-developer-cloud'),
-  extend = require('util')._extend;
+  extend = require('util')._extend,
+  config = require('config');
 
 // if bluemix credentials exists, then override local
 var credentials_stt = extend({
   version:'v1',
-	username: '<stt-username>',
-	password: '<stt-password>'
+	username: config.get('credentials_stt.username'),
+	password: config.get('credentials_stt.password')
 }, bluemix.getServiceCreds('speech_to_text')); // VCAP_SERVICES
 
 // Create the service wrapper
@@ -36,9 +37,9 @@ var speechToText = watson.speech_to_text(credentials_stt);
 // if bluemix credentials exists, then override local
 var credentials_tts = extend({
   version: 'v1',
-  username: '<tts-username>',
-  password: '<tts-password>',
-  headers: { 'Accept': 'audio/ogg; codecs=opus' }
+  username: config.get('credentials_tts.username'),
+  password: config.get('credentials_tts.password'),
+  headers: { 'Accept': 'audio/ogg; codecs=opus' , 'content-type': 'application/json'}
 }, bluemix.getServiceCreds('text_to_speech')); // VCAP_SERVICES
 
 // Create the service wrapper
@@ -51,8 +52,8 @@ require('./config/express')(app, speechToText);
 require('./config/socket')(io, speechToText);
 
 app.get('/synthesize', function(req, res) {
+  req.query.accept = 'audio/wav';
   var transcript = textToSpeech.synthesize(req.query);
-
   transcript.on('response', function(response) {
     console.log(response.headers);
     if (req.query.download) {

@@ -89,14 +89,14 @@ $(document).ready(function() {
           text = text.trim() + '. ';
           //$('<p></p>').appendTo(transcript);
           $(textarea).val(function(_, val){
-            return val + text + "\n"; 
+            return val + text + "\n";
           });
         }
-        paragraph.text(text); 
+        paragraph.text(text);
       }
     }
     transcript.show();
-    
+
   }
 
   function displayError(error) {
