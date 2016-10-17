@@ -1,0 +1,18 @@
+{
+    /*
+        The credentials for the Bluemix Speech To Text Service.
+        Change <stt_username> and <stt_password> to your service credentials.
+    */
+    "credentials_stt": {
+        "username": "<stt_username>",
+        "password":"<stt_password>"
+    },
+    /*
+        The credentials for the Bluemix Text To Speech Service.
+        Change <tts_username> and <tts_password> to your service credentials.
+    */
+    "credentials_tts": {
+        "username": "<tts_username>",
+        "password":"<tts_password>"
+    }
+}
