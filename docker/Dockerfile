@@ -79,6 +79,7 @@ ENV LANG C.UTF-8
 
 #
 # set the current working directory to be /code
+# (creates directory if it doesn't exist)
 #
 WORKDIR /code
 
