@@ -1,11 +1,28 @@
 #!/bin/sh
+
+#
+# stop on error
+#
 set -e
 
+#
+# get the directory name, just in case you call the script from another directory
+#
 DIR=$(dirname $0)
+
+#
+# the name of the target docker container is either provided as argument, or set by default to "watson_speechtext"
+#
 NAME=${1:-watson_speechtext}
 
+#
+# print some info
+#
 echo "building docker in $DIR as $NAME ..." 
 
+#
+# Enter credentials via stdin
+#
 echo "Enter speech-to-text username"
 read sttuser
 echo "Enter speech-to-text password"
@@ -15,6 +32,9 @@ read ttsuser
 echo "Enter text-to-speech password"
 read ttspass
 
+#
+# build the Dockerfile in $DIR and pass the credentials as arguments, as required by the Dockerfile
+#
 docker build \
 --build-arg sttuser="$sttuser" \
 --build-arg sttpass="$sttpass" \
@@ -22,17 +42,28 @@ docker build \
 --build-arg ttspass="$ttspass" \
 -t $NAME "$DIR" 
 
+#
+# print some info
+#
 echo "... successfully built docker in $DIR as $NAME" 
-
 echo "starting docker $NAME ..." 
 
-# check if a container with the same name exists and if so delete it
+#
+# check if a container with the name exists and if so,
+# delete it, otherwise the run command will fail
+#
 docker ps -a | grep "${NAME}_instance" && docker rm -f ${NAME}_instance
 
+#
+# run the container as a daemon (-d) and publish the 
+# container's exposed port 3000 to the local port 8080 (-p)
+#
 docker run -d -p 8080:3000 --name ${NAME}_instance $NAME
 
+#
+# print some more info
+#
 echo "... successfully started docker $NAME" 
-
 echo "
 ###
 #
