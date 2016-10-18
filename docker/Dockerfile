@@ -121,7 +121,7 @@ sed "s/<tts_password>/${ttspass}/g" > config/default.json
 EXPOSE 3000
 
 #
-# specify docker executable; this runs the app!
+# specify docker executable; this prints the lines with the usernames and runs the app!
 #
 ENTRYPOINT cat config/default.json | grep username & nodejs app.js
 
