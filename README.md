@@ -12,7 +12,7 @@
   3. note down the credentials for the two services
   4. change credentials for the services in config/default.json under `credentials_stt` and `credentials_tts`
   5. run `npm install` to install all necessary packages
-  6. run `node app.js` start the app on port 3000
+  6. run `node app.js` or `nodejs app.js` to start the app on port 3000
   7. you can also run the app in bluemix. There are various methods working with apps in bluemix, please choose the one that works best for you. Simply stage and deploy the app as it befits you. (adapt `manifest.yml` file)
 
 
