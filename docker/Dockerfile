@@ -114,7 +114,8 @@ RUN cat config/default.json | \
 sed "s/<stt_username>/${sttuser}/g" | \
 sed "s/<stt_password>/${sttpass}/g" | \
 sed "s/<tts_username>/${ttsuser}/g" | \
-sed "s/<tts_password>/${ttspass}/g" > config/default.json
+sed "s/<tts_password>/${ttspass}/g" > config/default.json_ && \
+mv config/default.json_ config/default.json
 
 #
 # provide access to port 3000 (node default)
