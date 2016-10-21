@@ -85,5 +85,8 @@ echo "
 # run a bash command in a running container and connect to it:
 # $ docker exec -i -t ${NAME}_instance bash
 #
+# run the container interactively and overwrite the entrypoint
+# $ docker run -t -i --entrypoint bash ${NAME}
+#
 ###
 "

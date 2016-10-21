@@ -14,6 +14,10 @@
 #
 #      $ docker run -d -p 8080:3000 --name wst_instance watson_speechtext
 #
+#   - run the built container interactively and overwrite the entrypoint
+#
+#      $ docker run -t -i --entrypoint bash watson_speechtext
+#
 #   - run a bash command in a running container and connect to it
 #      
 #      $ docker exec -i -t wst_instance bash
